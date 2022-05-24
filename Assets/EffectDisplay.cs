@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EffectDisplay : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class EffectDisplay : MonoBehaviour
                     description = "This building's <b><color=black>Population</color></b> is doubled by Grocery";
                     effect2.GetComponent<Effect>().Init(title, description);
                     effect2.transform.SetParent(transform, false);
+                    
                 }
             }
 
@@ -107,6 +109,7 @@ public class EffectDisplay : MonoBehaviour
             effect.transform.SetParent(transform, false);
 
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(gameObject.GetComponent<RectTransform>());
 
     }
     public void HideEffect() {

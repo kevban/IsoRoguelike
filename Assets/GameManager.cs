@@ -193,29 +193,7 @@ public class GameManager : MonoBehaviour
             cardSelectCanvas.SetActive(false);
             inventoryCanvas.SetActive(true);
         }
-        
 
-    }
-
-    public void SelectCardFromInv(Card clickedCard) {
-        if (selectedCard == null)
-        {
-            selectedCard = clickedCard;
-            //clickedCard.GetComponent<Animator>().Play("CardSelectFromInv");
-        }
-        else
-        {
-            if (selectedCard == clickedCard)
-            {
-                //clickedCard.GetComponent<Animator>().Play("CardSelectFromInvReverse");
-                selectedCard = null;
-            }
-            else {
-                //selectedCard.GetComponent<Animator>().Play("CardSelectFromInvReverse");
-                selectedCard = clickedCard;
-                //clickedCard.GetComponent<Animator>().Play("CardSelectFromInv");
-            }
-        }
     }
 
     void loadAllTiles() {

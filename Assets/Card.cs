@@ -107,7 +107,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEnd
         if (build)
         {
             gameManager.selectedTile = boardTile.CreateTile(true);
-            gameManager.SelectCardFromInv(this);
+            gameManager.selectedCard = this;
             gridManager.isBuilding = true;
             /*
             int district;
@@ -187,7 +187,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEnd
         originalPos = transform.position;
 
         gameManager.selectedTile = boardTile.CreateTile(true);
-        gameManager.SelectCardFromInv(this);
+        gameManager.selectedCard = this;
         gridManager.isBuilding = true;
     }
 

@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
         if (!transform.position.Equals(movePoint.position))
         {
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+            print(Vector3.Angle(transform.position, movePoint.position));
         }
         else {
             finishedMoving = true;

@@ -43,10 +43,15 @@ public class Player : MonoBehaviour
                 gridManager.playerPos = 0;
             }
             movePoint = gridManager.waypoints[gridManager.playerPos].transform;
+            Vector3 movement = transform.position - movePoint.position;
+            GetComponent<Animator>().SetFloat("Horizontal", -movement.x);
+            GetComponent<Animator>().SetFloat("Vertical", -movement.y);
+            GetComponent<Animator>().SetBool("Moving", true);
             yield return new WaitUntil(() => finishedMoving == true);
         }
         if (gameManager.pickingCard) //when finished moving, gameManager.pickingCard == true
         {
+            GetComponent<Animator>().SetBool("Moving", false) ;
             gridManager.Landed(gridManager.playerPos);
         }
 
@@ -61,7 +66,7 @@ public class Player : MonoBehaviour
         if (!transform.position.Equals(movePoint.position))
         {
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-            print(Vector3.Angle(transform.position, movePoint.position));
+            
         }
         else {
             finishedMoving = true;

@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     public int worldTourist = 0;
     public int incomePerIndustry = 2;
 
+    public static int ceo = 0;
+
     //4 districts, starting @ 0 = bottom left
     //within each district: 0 = population, 1 = commerce
     public List<List<int>> district; 
@@ -56,7 +58,15 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         loadAllTiles();
+        LoadPlayer();
         //audioManager.Shuffle();
+    }
+
+    void LoadPlayer() {
+        /*switch (ceo) {
+            case 1:
+                Player.
+        }*/
     }
 
 

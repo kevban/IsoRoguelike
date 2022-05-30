@@ -63,10 +63,11 @@ public class GameManager : MonoBehaviour
     }
 
     void LoadPlayer() {
-        /*switch (ceo) {
-            case 1:
-                Player.
-        }*/
+        switch (ceo) {
+            default:
+                break;
+                
+        }
     }
 
 

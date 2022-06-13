@@ -42,12 +42,12 @@ public class SceneTransitionManager : MonoBehaviour
     public void SelectChar(int ceoNum) {
         GameManager.ceo = ceoNum;
         switch (ceoNum) {
-            case 1:
+            case 0:
                 charName.text = "Mud Giant";
                 charSprite.sprite = Resources.LoadAll<Sprite>("Char1")[0];
                 charSkillDescription.text = "Active Skill: \n";
                 break;
-            case 2:
+            case 1:
                 charName.text = "Old man";
                 charSprite.sprite = Resources.LoadAll<Sprite>("Char2")[0];
                 charSkillDescription.text = "Active Skill: \nYour next 3 rolls are (1)";

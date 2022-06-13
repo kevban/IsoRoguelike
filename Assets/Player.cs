@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.U2D.Animation;
 
 
 //This controls all player movements, animations
@@ -10,14 +11,35 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public GridManager gridManager;
     public GameManager gameManager;
+    public SpriteRenderer playerSprite;
     public Transform movePoint;
     public int curWaypoint = 0;
     public bool finishedMoving = true;
+    public Animator animator;
+    public SpriteLibraryAsset spriteLibrary;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        AnimationClip anim;
+    }
+
+    public void SetCEO(int ceoNum) {
+        switch (ceoNum) {
+            case 0:
+                break;
+            case 1:
+                break;
+            default:
+                break;
+        }
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[0], "Idle", "Char1_0");
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[1], "Idle", "Char1_1");
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[2], "Walk", "Char1_2");
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[3], "Walk", "Char1_3");
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[4], "Walk", "Char1_4");
+        spriteLibrary.AddCategoryLabel(Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[5], "Walk", "Char1_5");
+        print("dwedw");
     }
 
     public void Init() { 
@@ -44,14 +66,14 @@ public class Player : MonoBehaviour
             }
             movePoint = gridManager.waypoints[gridManager.playerPos].transform;
             Vector3 movement = transform.position - movePoint.position;
-            GetComponent<Animator>().SetFloat("Horizontal", -movement.x);
-            GetComponent<Animator>().SetFloat("Vertical", -movement.y);
-            GetComponent<Animator>().SetBool("Moving", true);
+            animator.SetFloat("Horizontal", -movement.x);
+            animator.SetFloat("Vertical", -movement.y);
+            animator.SetBool("Moving", true);
             yield return new WaitUntil(() => finishedMoving == true);
         }
         if (gameManager.pickingCard) //when finished moving, gameManager.pickingCard == true
         {
-            GetComponent<Animator>().SetBool("Moving", false) ;
+            animator.SetBool("Moving", false) ;
             gridManager.Landed(gridManager.playerPos);
         }
 

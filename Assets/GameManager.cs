@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public List<BoardTile>  tiles = new List<BoardTile>(); //contains the base version of buildable tiles
     public List<BoardTile> allTiles = new List<BoardTile>(); //contains the base version of all tiles
+    public Player player;
     public GameObject cardPrefab;
     public GameObject cardSelectCanvas;
     public GameObject cardSelectHolder;
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryCanvas;
     public Level levelText;
     public AudioManager audioManager;
-
+    public Image ceoPortrait; 
 
     [HideInInspector]
     public List<Card> playerDeck = new List<Card>();
@@ -49,7 +50,8 @@ public class GameManager : MonoBehaviour
     public int worldTourist = 0;
     public int incomePerIndustry = 2;
 
-    public static int ceo = 0;
+    public static int ceo;
+    public int ceoNum;
 
     //4 districts, starting @ 0 = bottom left
     //within each district: 0 = population, 1 = commerce
@@ -58,17 +60,17 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         loadAllTiles();
-        LoadPlayer();
+        LoadCEO();
         //audioManager.Shuffle();
     }
 
-    void LoadPlayer() {
-        switch (ceo) {
-            default:
-                break;
-                
-        }
+    void LoadCEO() {
+        ceoNum = GameManager.ceo;
+        print(GameManager.ceo);
+        player.SetCEO(ceoNum);
+        ceoPortrait.sprite = Resources.LoadAll<Sprite>("Char" + (ceoNum + 1))[6];
     }
+
 
 
 
